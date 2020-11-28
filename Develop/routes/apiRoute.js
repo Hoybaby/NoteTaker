@@ -3,10 +3,20 @@
 //put updated data from the database
 //do not use name to delete, ONLY THE ID. DELETE by ID and UPDATE by ID
 const path = require('path');
+var express = require("express");
+const router = express.Router();
 
-const router = require('express').Router();
 
+var noteData = require('../Data/noteData.js');
+var titleData = require('../Data/titleData.js');
 
+router.get('/api/noteData', function (req, res){
+    res.json(noteData);
+})
+
+router.get('/api/titleData'), function ( req, res) {
+    res.json(titleData)
+}
 
 
 module.exports = router;
