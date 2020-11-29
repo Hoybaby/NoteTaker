@@ -7,16 +7,16 @@ var express = require("express");
 const router = express.Router();
 
 
-var noteData = require('../Data/noteData.js');
-var titleData = require('../Data/titleData.js');
+var noteData = require('../Develop\db\db.json');
+
 
 router.get('/api/noteData', function (req, res){
     res.json(noteData);
 })
 
-router.get('/api/titleData'), function ( req, res) {
+router.get('/api/titleData', function ( req, res) {
     res.json(titleData)
-}
+})
 
 
 module.exports = router;
