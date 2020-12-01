@@ -5,11 +5,16 @@
 const path = require("path");
 var express = require("express");
 const router = express.Router();
-const cryptoRandomString = require('crypto-random-string'); //this is to make a random string for an ID
+// const cryptoRandomString = require('crypto-random-string'); //this is to make a random string for an ID
+const fs = require("fs");
 
-var noteData = require("..db/db.json");
-let savedNotesGlobal = 
+var noteData = require("../db/db.json");
+let notesGlobal = 
 
+
+function savedNotes() {
+    console.log("Saved Notes", savedNotesGlobal);
+}
 // app.get("/notes", function (req, res) {
 //                 res.sendFile(path.join(__dirname, "./public/notes.html"));
 //                 console.log("Notes by user");
@@ -20,11 +25,18 @@ let savedNotesGlobal =
 //             console.log("Main index");
 // });
 
-app.get("/api/notes", function (req, res) {
-        res.json(noteData);
+router.get("/api/notes", function (req, res) {
+
+        fs.readFile(noteData, function(err, data) {
+            if (err) throw err;
+            let allNotes = JSON.parse(data);
+            return res.json(allNotes)
+        } );
+
+
 });
 
-app.post("/api/notes", function (req, res) {
+router.post("/api/notes", function (req, res) {
     let savedNotes = JSON.stringify(fs.readFileSync("..db/db.json", utf8));
     let ranID = function () {
         // Math.random should be unique because of its seeding algorithm.
@@ -40,16 +52,16 @@ app.post("/api/notes", function (req, res) {
     console.log('test1');
     noteData.push(newNote);
     res.json(true);
-});
 
-fs.writeFileSync(noteData, JSON.stringify(savedNotes), (err) => {
+    fs.writeFileSync(noteData, JSON.stringify(savedNotes), (err) => {
     if(err) throw err;
     console.log("You got an error")
 });
 
-function savedNotes() {
-    console.log("Saved Notes", savedNotesGlobal);
-}
+    return res.json(savedNotes)
+});
+
+
 
 router.get("/api/notes", function (req, res) {
     res.json(noteData);
