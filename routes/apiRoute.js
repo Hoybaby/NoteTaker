@@ -5,7 +5,7 @@
 const path = require("path");
 var express = require("express");
 const router = express.Router();
-const shortId = require('shortid');
+const shortId = require('shortid');//this needs to be installed with npm shortid
 const fs = require("fs");
 
 var noteData = require("../db/db.json");
