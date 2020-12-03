@@ -42,6 +42,9 @@ app.get("/", function (req, res) {
 require("./routes/apiRoute")(app);
 // require("./routes/htmlRoutes")(app);
 
+
+//below is code that i tested on the server.js sever before moving it to API routes to makes sure it was working
+//properly.
 // app.get("/api/notes", function (req, res) {
 //   fs.readFile("db/db.json", function (err, data) {
 //     if (err) throw err;
