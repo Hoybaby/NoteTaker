@@ -43,63 +43,6 @@ require("./routes/apiRoute")(app);
 // require("./routes/htmlRoutes")(app);
 
 
-//below is code that i tested on the server.js sever before moving it to API routes to makes sure it was working
-//properly.
-// app.get("/api/notes", function (req, res) {
-//   fs.readFile("db/db.json", function (err, data) {
-//     if (err) throw err;
-//     let allNotes = JSON.parse(data);
-//     return res.json(allNotes);
-//   });
-// });
-
-// app.post('/api/notes', function (req, res) {
-//   fs.readFile("db/db.json", function (err, data) {
-//     if (err) throw err;
-//     let allNotes = JSON.parse(data);
-//     let newNote = {
-//       title: req.body.title,
-//       text: req.body.text,
-//       id: shortId.generate()
-//     }
-    
-//     allNotes.push(newNote);
-
-//     fs.writeFile('db/db.json', JSON.stringify(allNotes, null, 2), (err) => {
-//       if (err) throw err;
-//       res.send('200') //
-//     });
-
-//    });
-// });
-
-// app.delete('/api/notes/:id', function (req, res) {
-//   const deletedNotes = req.params.id;
-//   fs.readFile("db/db.json", function (err, data) {
-//     if (err) throw err;
-//     let allNotes = JSON.parse(data);
-  
-//   function searchNotes(deletedNotes, allNotes) {
-//     for (var i = 0; i < allNotes.length; i++) {
-//       if (allNotes[i].id === deletedNotes) {
-//         allNotes.splice(i,1);
-//       }
-//     }
-//   }
-//   searchNotes(deletedNotes, allNotes);
-
-//   fs.writeFile("db/db.json", JSON.stringify(allNotes, null, 2), (err) => {
-//     if (err) throw err;
-//     res.send('200') //
-//   });
-    
-//   });
-// });
-
-
-
-
-
 
 
 // LISTENER

@@ -12,7 +12,7 @@ router.get("/notes",(req, res) => {
 
 router.get("/",(req, res) => {
     res.sendFile(path.join(__dirname,"../public/index.html"))
-    console.log("Your index")
+    console.log("Your chat")
 });
 
 module.exports = router;
